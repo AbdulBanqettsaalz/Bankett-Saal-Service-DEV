@@ -1,0 +1,15 @@
+nod{
+    stage('bankett scm checkout')
+    git credentialsId: 'git-creds', url:'https://github.com/Bankett-Saal/Bankett-Saal-Service-DEV/new/master'
+    }
+    
+    stage('gradle build'){
+    def gradleHome = tool name:'gradle',type:'gradle
+    defgradleCMD ="${gradleHome}/bin/gradle
+      sh "${gradleCMD} cleam build"
+      }
+    
+      stage ('running the artifact'){
+      sh"java -jar /var/lib/jenkins/workspacr/bankettsaalz-sowmya/build/libs/*.jar"
+      }
+    }
