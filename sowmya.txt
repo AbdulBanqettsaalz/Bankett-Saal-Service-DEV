@@ -5,11 +5,11 @@ node{
     
     stage ('gradle build'){
     def gradleHome = tool name: 'gradle', type: 'gradle'
-    defgradleCMD = "${gradleHome}/bin/gradle"
+    def gradleCMD = "${gradleHome}/bin/gradle"
     sh "${graldeCMD} clean build"
     }
     
     stage ('running the artifact'){
-    sh " java -jar /var/lib/jenkins/workspace/bankettsaalz-sowmya/build/libs/*.jar"
+    sh "java -jar /var/lib/jenkins/workspace/bankettsaalz-sowmya/build/libs/*.jar"
     }
 }
